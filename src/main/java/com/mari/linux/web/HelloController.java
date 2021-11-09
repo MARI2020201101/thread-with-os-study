@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
-@Slf4j
 public class HelloController {
 
     @GetMapping("/hello")
@@ -22,7 +21,7 @@ public class HelloController {
 
         AtomicInteger idx = new AtomicInteger();
         for (int i = 0; i < 1000; i++) {
-            executor.execute(()-> log.info("hello thread!! "+ idx.addAndGet(1)));
+            executor.execute(()-> System.out.println("hello thread!! "+ idx.addAndGet(1)));
         }
         executor.shutdown();
     }
